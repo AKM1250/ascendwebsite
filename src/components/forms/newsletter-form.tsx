@@ -45,7 +45,7 @@ export function NewsletterForm() {
         </Button>
       </div>
       {errors.email ? (
-        <p className="text-xs text-red-600 dark:text-red-400">{errors.email.message}</p>
+        <p className="text-xs text-red-600">{errors.email.message}</p>
       ) : null}
       {done ? (
         <p className="text-xs text-accent-emerald" role="status">
