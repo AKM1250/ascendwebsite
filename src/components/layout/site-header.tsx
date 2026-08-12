@@ -9,7 +9,6 @@ import { ChevronDown, Menu, Search, X } from "lucide-react";
 import { mobileExtraLinks, navigation, siteConfig, type NavItem } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/layout/theme-toggle";
 
 const searchSuggestions = [
   { label: "IGCSE", href: "/academics/igcse" },
@@ -228,7 +227,7 @@ export function SiteHeader() {
           </Link>
 
           <nav
-            className="hidden items-center gap-1.5 rounded-2xl bg-white p-1.5 shadow-soft lg:flex dark:bg-white"
+            className="hidden items-center gap-1.5 rounded-2xl bg-white p-1.5 shadow-soft lg:flex"
             aria-label="Primary pages"
           >
             {navigation.map((item) => (
@@ -309,7 +308,6 @@ export function SiteHeader() {
               </AnimatePresence>
             </div>
 
-            <ThemeToggle className="rounded-full bg-white text-foreground hover:bg-[var(--nav-soft-blue)] hover:text-[var(--nav-soft-blue-text)]" />
             <Button asChild className="hidden sm:inline-flex" size="sm">
               <Link href="/contact">Apply Now</Link>
             </Button>

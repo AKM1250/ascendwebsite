@@ -26,30 +26,6 @@
   --font-helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-.dark {
-  --background: #07111f;
-  --foreground: #f8fafc;
-  --surface: #0d1829;
-  --surface-muted: #122033;
-  --card: #15263c;
-  --border: rgba(255, 255, 255, 0.08);
-  --primary: #3b82f6;
-  --primary-foreground: #f8fafc;
-  --royal: #5ba3e0;
-  --accent-gold: #e8b923;
-  --accent-emerald: #34d399;
-  --accent-sky: #7dd3fc;
-  --muted: #94a3b8;
-  --muted-foreground: #cbd5e1;
-  --ring: #5ba3e0;
-  --hero-overlay: rgba(7, 17, 31, 0.72);
-  --nav-bg: rgba(7, 17, 31, 0.88);
-  --nav-bg-scrolled: rgba(13, 24, 41, 0.96);
-  --nav-soft-blue: #1a3355;
-  --nav-soft-blue-text: #93c5fd;
-  --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.35);
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -77,11 +53,8 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
   transition: background-color 220ms ease, color 220ms ease;
-}
-
-html.dark {
-  color-scheme: dark;
 }
 
 body {
@@ -120,11 +93,6 @@ h6,
 .font-serif,
 .font-sans {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-.dark body {
-  background:
-    linear-gradient(180deg, #0a1628 0%, #07111f 32%, #07111f 100%);
 }
 
 ::selection {
@@ -186,10 +154,6 @@ h6,
   box-shadow: 0 10px 30px rgba(15, 45, 95, 0.06);
 }
 
-.dark .site-header.is-scrolled {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-}
-
 .gradient-text {
   background: linear-gradient(135deg, var(--primary), var(--royal));
   -webkit-background-clip: text;
@@ -202,11 +166,4 @@ h6,
     linear-gradient(180deg, #ffffff, #f0f5fb),
     radial-gradient(circle at 18% 15%, rgba(30, 96, 181, 0.12), transparent 42%),
     radial-gradient(circle at 85% 0%, rgba(232, 185, 35, 0.1), transparent 36%);
-}
-
-.dark .mesh-panel {
-  background:
-    linear-gradient(180deg, color-mix(in oklab, var(--card) 90%, transparent), var(--card)),
-    radial-gradient(circle at 18% 15%, rgba(91, 163, 224, 0.14), transparent 42%),
-    radial-gradient(circle at 85% 0%, rgba(232, 185, 35, 0.08), transparent 36%);
 }

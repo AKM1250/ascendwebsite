@@ -114,7 +114,7 @@ function Field({
     <label className="block space-y-2 text-sm">
       <span className="font-medium text-foreground">{label}</span>
       {children}
-      {error ? <span className="block text-xs text-red-600 dark:text-red-400">{error}</span> : null}
+      {error ? <span className="block text-xs text-red-600">{error}</span> : null}
     </label>
   );
 }
