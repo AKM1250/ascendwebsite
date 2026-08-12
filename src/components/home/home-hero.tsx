@@ -27,8 +27,8 @@ export function HomeHero() {
             className="object-cover object-[center_20%]"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0B1220]/88 via-[#0f3d8c]/45 to-[#1e60b5]/25" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220]/55 via-transparent to-[#0B1220]/25" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0B1220]/92 via-[#0f3d8c]/55 to-[#1e60b5]/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220]/75 via-[#0B1220]/25 to-[#0B1220]/30" />
         </motion.div>
 
         <div className="container-ascend relative z-10 flex h-full min-h-[420px] flex-col justify-end pb-8 pt-28 sm:min-h-[520px] sm:pb-10">
@@ -38,7 +38,7 @@ export function HomeHero() {
           <h1 className="max-w-3xl text-4xl font-bold leading-[1.08] tracking-tight text-white md:text-6xl">
             {siteConfig.tagline}
           </h1>
-          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/85 md:text-base">
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white drop-shadow-sm md:text-base">
             {siteConfig.description}
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
