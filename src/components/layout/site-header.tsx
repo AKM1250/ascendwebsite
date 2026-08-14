@@ -21,8 +21,10 @@ function NavLink({
 }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [pinned, setPinned] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const hasChildren = Boolean(item.children?.length);
+  const showOverview = item.overviewLabel !== false;
 
   const isActive =
     item.href === "/"
@@ -34,7 +36,10 @@ function NavLink({
   useEffect(() => {
     if (!hasChildren) return;
     const onPointerDown = (event: MouseEvent) => {
-      if (!ref.current?.contains(event.target as Node)) setOpen(false);
+      if (!ref.current?.contains(event.target as Node)) {
+        setOpen(false);
+        setPinned(false);
+      }
     };
     document.addEventListener("mousedown", onPointerDown);
     return () => document.removeEventListener("mousedown", onPointerDown);
@@ -57,14 +62,23 @@ function NavLink({
       ref={ref}
       className="relative"
       onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseLeave={() => {
+        if (!pinned) setOpen(false);
+      }}
     >
       <button
         type="button"
         className={cn(className, "inline-flex items-center gap-1", isActive && "text-primary")}
         aria-expanded={open}
         aria-haspopup="menu"
-        onClick={() => setOpen((value) => !value)}
+        onClick={() => {
+          if (item.persistMenuOnClick) {
+            setPinned(true);
+            setOpen(true);
+            return;
+          }
+          setOpen((value) => !value);
+        }}
       >
         {item.title}
         <ChevronDown
@@ -82,20 +96,23 @@ function NavLink({
             role="menu"
           >
             <div className="min-w-[16rem] overflow-hidden rounded-xl border border-border bg-white py-2 shadow-soft">
-              <Link
-                href={item.href}
-                role="menuitem"
-                className={cn(
-                  "block px-4 py-2.5 text-sm font-semibold text-[#0B1220] transition hover:bg-[#f3f6fb] hover:text-primary",
-                  pathname === item.href && "text-primary"
-                )}
-                onClick={() => {
-                  setOpen(false);
-                  onNavigate?.();
-                }}
-              >
-                {item.overviewLabel ?? "Overview"}
-              </Link>
+              {showOverview ? (
+                <Link
+                  href={item.href}
+                  role="menuitem"
+                  className={cn(
+                    "block px-4 py-2.5 text-sm font-semibold text-[#0B1220] transition hover:bg-[#f3f6fb] hover:text-primary",
+                    pathname === item.href && "text-primary"
+                  )}
+                  onClick={() => {
+                    setOpen(false);
+                    setPinned(false);
+                    onNavigate?.();
+                  }}
+                >
+                  {item.overviewLabel ?? "Overview"}
+                </Link>
+              ) : null}
               {item.children?.map((child) => (
                 <Link
                   key={child.href}
@@ -107,6 +124,7 @@ function NavLink({
                   )}
                   onClick={() => {
                     setOpen(false);
+                    setPinned(false);
                     onNavigate?.();
                   }}
                 >
@@ -212,12 +230,15 @@ export function SiteHeader() {
                   );
                 }
 
+                const submenuOpen = mobileOpenMenus.includes(item.href);
+                const showOverview = item.overviewLabel !== false;
+
                 return (
                   <div key={item.href}>
                     <button
                       type="button"
                       className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-lg font-bold text-[#0B1220]"
-                      aria-expanded={mobileOpenMenus.includes(item.href)}
+                      aria-expanded={submenuOpen}
                       onClick={() =>
                         setMobileOpenMenus((menus) =>
                           menus.includes(item.href)
@@ -230,12 +251,12 @@ export function SiteHeader() {
                       <ChevronDown
                         className={cn(
                           "h-4 w-4 transition-transform duration-200",
-                          mobileOpenMenus.includes(item.href) && "rotate-180"
+                          submenuOpen && "rotate-180"
                         )}
                       />
                     </button>
                     <AnimatePresence>
-                      {mobileOpenMenus.includes(item.href) ? (
+                      {submenuOpen ? (
                         <motion.div
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
@@ -244,16 +265,18 @@ export function SiteHeader() {
                           className="overflow-hidden"
                         >
                           <div className="space-y-1 px-2 pb-3">
-                            <Link
-                              href={item.href}
-                              className={cn(
-                                "block rounded-lg px-3 py-2 text-base font-semibold text-[#0B1220] hover:bg-[#f3f6fb] hover:text-primary",
-                                pathname === item.href && "text-primary"
-                              )}
-                              onClick={() => setOpen(false)}
-                            >
-                              {item.overviewLabel ?? "Overview"}
-                            </Link>
+                            {showOverview ? (
+                              <Link
+                                href={item.href}
+                                className={cn(
+                                  "block rounded-lg px-3 py-2 text-base font-semibold text-[#0B1220] hover:bg-[#f3f6fb] hover:text-primary",
+                                  pathname === item.href && "text-primary"
+                                )}
+                                onClick={() => setOpen(false)}
+                              >
+                                {item.overviewLabel ?? "Overview"}
+                              </Link>
+                            ) : null}
                             {item.children.map((child) => (
                               <Link
                                 key={child.href}

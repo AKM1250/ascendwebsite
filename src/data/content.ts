@@ -266,18 +266,94 @@ export const testimonials = [
   },
 ] as const;
 
+export const aboutWelcome = {
+  photo: "/images/campus/gallery-6.jpg",
+  photoAlt: "Students and community gathering at Ascend International School",
+  title: "About Us",
+  quote:
+    "Welcome to Ascend International School. We believe that true education extends far beyond the covers of a textbook. Our mission is to ignite a lifelong passion for learning, cultivate critical thinking, and build strong moral character in every student who walks through our doors. Here at Ascend, we don’t just teach for tests—we prepare our young adults for life. Through individualized guidance, rigorous academic programs, and an inclusive community, we empower students to discover their unique strengths and ascend to their full potential. We invite you to explore our campus, meet our dedicated faculty, and become part of our vibrant learning community.",
+  attribution: "Dr. Elizabeth Vance, Head of School",
+} as const;
+
 export const founders = [
   {
     name: "Sayar Thaw Zin Aung Gyi",
     title: "Founder",
     credentials: ["BA, Brown University (Ivy League)", "MPP, University of Oxford"],
     image: "/images/people/founder-1.jpg",
+    message:
+      "Welcome to Ascend. I founded this school so ambitious students in Yangon could pursue internationally recognized pathways with the same seriousness, care, and university guidance I wished I had seen more of at home. We measure success not only by examination results, but by the character, curiosity, and confidence students carry into the world.",
   },
   {
     name: "Sayar Min Thaw Htut",
     title: "Founder",
     credentials: ["BA, University of Pennsylvania", "MBA, National University of Singapore"],
     image: "/images/people/founder-2.jpg",
+    message:
+      "Every student who joins Ascend arrives with a different story and a different destination. Our role is to listen first, then build a plan—academic, personal, and extracurricular—that helps them ascend. I am proud of the community we are growing: rigorous, inclusive, and deeply invested in each young adult’s future.",
+  },
+] as const;
+
+export const aboutVision =
+  "To be a globally recognized institution of educational excellence, shaping creative, compassionate, and resilient leaders who drive positive change in an interconnected world.";
+
+export const aboutMission =
+  "To provide a balanced, student-centered education that challenges intellect, fosters ethical leadership, respects diversity, and encourages continuous self-improvement.";
+
+export const educationalApproach = [
+  "We begin with the individual: teachers learn each student’s pace, strengths, and goals before shaping instruction, feedback, and stretch opportunities.",
+  "Academic programs stay rigorous and internationally aligned—IGCSE, International A Levels, GED, and OSSD—without treating tests as the whole of education.",
+  "University counselling runs alongside classroom learning, so subject choices, extracurriculars, and applications form one coherent plan.",
+  "Smaller cohorts and specialist teaching make differentiated instruction possible, including support for digital literacy and active, discussion-rich lessons.",
+  "Pastoral care and academic advising work with families, so social-emotional wellbeing is part of progress—not a separate afterthought.",
+  "Students are encouraged to lead clubs, projects, and service, building the character and initiative universities and communities look for.",
+] as const;
+
+export const facultyGroups = [
+  {
+    title: "Leadership & Administration",
+    description:
+      "Our leadership team brings decades of international educational experience, strategic foresight, and a passion for student development. They guide our academic vision, maintain high institutional standards, and ensure that every student receives the guidance and resources required to excel.",
+    members: [
+      {
+        name: "Sayar Thaw Zin Aung Gyi",
+        position: "Founder & Academic Leadership",
+        bio: "BA, Brown University; MPP, University of Oxford. Guides Ascend’s academic vision and university pathway strategy.",
+        image: "/images/people/founder-1.jpg",
+      },
+      {
+        name: "Sayar Min Thaw Htut",
+        position: "Founder & Strategic Leadership",
+        bio: "BA, University of Pennsylvania; MBA, National University of Singapore. Champions personalized learning and institutional growth.",
+        image: "/images/people/founder-2.jpg",
+      },
+    ],
+  },
+  {
+    title: "Teaching Staff & Specialists",
+    description:
+      "Our teachers are subject-matter experts, mentors, and innovators. Recruited from top institutions worldwide, our faculty members specialize in active learning, differentiated instruction, and digital literacy. They dedicate themselves to recognizing each child’s learning style and nurturing their personal growth.",
+    members: [
+      {
+        name: "IGCSE & A-Level Faculty",
+        position: "Teaching Staff & Specialists",
+        bio: "Experienced instructors delivering intensive curricula with student-centered methods, examination focus, and support across sciences, mathematics, business, and English.",
+        image: "/images/people/faculty-1.jpg",
+      },
+    ],
+  },
+  {
+    title: "Student Care & Counseling Team",
+    description:
+      "Education at Ascend addresses the whole child. Our dedicated team of academic advisors, university counselors, and pastoral care staff work side-by-side with teachers and parents. They provide social-emotional support, career roadmapping, and university placement guidance every step of the way.",
+    members: [
+      {
+        name: "University Admissions Counselors",
+        position: "Student Care & Counseling",
+        bio: "Dedicated counselors supporting shortlists, essays, testing, and scholarship strategy for global admissions—working closely with teachers and families.",
+        image: "/images/people/faculty-2.jpg",
+      },
+    ],
   },
 ] as const;
 

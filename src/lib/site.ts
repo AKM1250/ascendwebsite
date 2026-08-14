@@ -45,20 +45,43 @@ export const activityLinks = [
 export type NavItem = {
   title: string;
   href: string;
-  overviewLabel?: string;
   children?: readonly { title: string; href: string }[];
+  /** Label for the parent overview link. Set `false` to hide it. */
+  overviewLabel?: string | false;
+  /** Keep the dropdown open when the tab is clicked (in addition to hover). */
+  persistMenuOnClick?: boolean;
 };
+
+/** About menu destinations */
+export const aboutLinks = [
+  { title: "About Us", href: "/about" },
+  { title: "Our Values", href: "/about/values" },
+  { title: "Faculty Members", href: "/about/faculty" },
+] as const;
 
 /** Primary header tabs — Programmes lists each pathway as its own tab */
 export const navigation: readonly NavItem[] = [
   { title: "Home", href: "/" },
-  { title: "About", href: "/about" },
-  { title: "Programmes", href: "/academics", overviewLabel: "All Programmes", children: courseLinks },
+  {
+    title: "About",
+    href: "/about",
+    children: aboutLinks,
+    overviewLabel: false,
+    persistMenuOnClick: true,
+  },
+  {
+    title: "Programmes",
+    href: "/academics",
+    overviewLabel: "All Programmes",
+    children: courseLinks,
+    persistMenuOnClick: true,
+  },
   {
     title: "Clubs & Activities",
     href: "/campus-life",
     overviewLabel: "Overview",
     children: activityLinks,
+    persistMenuOnClick: true,
   },
   { title: "Contact", href: "/contact" },
 ];
